@@ -23,10 +23,10 @@ async function criarAlunoController(req, res) {
         }
 
         if (error.code === 'P2002'){
-            res.status(409).json({mensagem: 'Matricula ou email ja existentes'})
+            return res.status(409).json({mensagem: 'Matricula ou email ja existentes'})
         }
         
-        return res.status(500).json({mensagem: 'Erro interno no servidor', detalhe: error.message});
+        return res.status(500).json({mensagem: 'Erro interno no servidor'});
 
     }
 }
@@ -49,14 +49,14 @@ async function buscarAlunosPorIdController(req, res) {
         const id = req.params.id;
         const aluno = await buscarAlunosPorId(id);
         if(!aluno){
-            return res.status(404).json({menssagem: 'Aluno não encontrado'});
+            return res.status(404).json({mensagem: 'Aluno não encontrado'});
         }
 
         res.status(200).json(aluno);
     }
     catch(error){
-        console.log(error);
-
+        console.error(error);
+        return res.status(500).json({mensagem: 'Erro interno no servidor'});
     }
     
 }
@@ -72,10 +72,9 @@ async function atualizarAlunoController(req, res) {
     catch(error){
         console.log(error);
         if (error.code === 'P2025'){
-            res.status(404).json({mensagem: 'Aluno não encontrado'})
-            
+            return res.status(404).json({mensagem: 'Aluno não encontrado'})
         }
-        res.status(500).json({mensagem: 'Erro interno no servidor'})
+        return res.status(500).json({mensagem: 'Erro interno no servidor'})
     }
     
 }
@@ -89,11 +88,10 @@ async function deletarAlunoController(req, res) {
     }
     catch(error){
         if (error.code === 'P2025'){
-            res.status(404).json({mensagem: 'Aluno não encontrado'});
+            return res.status(404).json({mensagem: 'Aluno não encontrado'});
         }
-        console.log(error);
+        console.error(error);
         return res.status(500).json({mensagem: "Erro interno no servidor"});
-
     }
     
 }
