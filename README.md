@@ -147,6 +147,7 @@ http://localhost:3000/alunos/1
 
 ---
 
+
 ## 🛡️ Validações Implementadas (Zod)
 
 Para garantir dados limpos, as seguintes regras foram aplicadas:
