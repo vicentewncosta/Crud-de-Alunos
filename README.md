@@ -74,6 +74,79 @@ A API estará disponível em:
 
 ---
 
+## 🧪 Testando a API com Postman
+
+Você pode testar todos os endpoints utilizando o **Postman** ou qualquer ferramenta similar (Insomnia, Thunder Client, etc.).
+
+### 🔹 Passo a passo
+
+1. Abra o Postman
+2. Crie uma nova requisição
+3. Escolha o método HTTP (GET, POST, PUT, DELETE)
+4. Use a URL base:
+```
+http://localhost:3000
+```
+
+---
+
+### 🔸 Exemplo: Criar um aluno (POST /alunos)
+
+- Método: `POST`
+- URL:  
+```
+http://localhost:3000/alunos
+```
+
+- Body (JSON):
+```json
+{
+  "nome": "João Silva",
+  "email": "joao@email.com",
+  "matricula": "12345",
+  "nota": 8.5
+}
+```
+
+---
+
+### 🔸 Exemplo: Listar alunos (GET /alunos)
+
+- Método: `GET`
+- URL:
+```
+http://localhost:3000/alunos
+```
+
+---
+
+### 🔸 Exemplo: Atualizar aluno (PUT /alunos/:id)
+
+- Método: `PUT`
+- URL:
+```
+http://localhost:3000/alunos/1
+```
+
+- Body (JSON - parcial permitido):
+```json
+{
+  "nota": 9
+}
+```
+
+---
+
+### 🔸 Exemplo: Deletar aluno (DELETE /alunos/:id)
+
+- Método: `DELETE`
+- URL:
+```
+http://localhost:3000/alunos/1
+```
+
+---
+
 ## 🛡️ Validações Implementadas (Zod)
 
 Para garantir dados limpos, as seguintes regras foram aplicadas:
